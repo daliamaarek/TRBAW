@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ClassificationWebsite.iml" filepath="$PROJECT_DIR$/ClassificationWebsite.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thesis-project-website.iml" filepath="$PROJECT_DIR$/thesis-project-website.iml" />
+    </modules>
+  </component>
+</project>

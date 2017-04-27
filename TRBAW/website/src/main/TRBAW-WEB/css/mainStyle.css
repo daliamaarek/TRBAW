@@ -1,0 +1,128 @@
+#chartdiv {
+	width		: 100%;
+	height		: 500px;
+	font-size	: 11px;
+}																		 
+
+#myChart {
+  width:100%;
+  height:100%;
+}
+ #chartdiv {
+    width: 100%;
+    height: 400px;
+  }
+
+
+activity-chart {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    text-align: left;
+    position: absolute;
+}
+
+#autoScroll {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  width: auto;
+  /*background-color: #DEDEDE;*/
+  font-family: Arial;
+  padding: 0 10px;
+}
+
+#autoScroll.auto article {
+  position: relative;
+  opacity: 0;
+  padding: 90% 0 15%;
+  -webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+  /*-webkit-animation: up 20s linear 0 infinite;*/
+  /*-webkit-animation-duration: 50s; */
+   /*animation: aia2 5s linear infinite alternate*/
+   -webkit-animation: up 9000s linear infinite alternate;
+   -moz-animation: up 9000s linear infinite alternate;
+    -ms-animation: up 9000s linear infinite alternate;
+     -o-animation: up 9000s linear infinite alternate;
+        animation: up 9000s linear infinite alternate; /* this comes last */
+
+}
+
+@-webkit-keyframes up {
+   0% { 
+     opacity: 0;
+     transform: translate(0); 
+   }
+   0% { 
+     opacity: 1;
+   }
+   99% { 
+     opacity: 1;
+     transform: translate(0, -100%); 
+   }
+   100% {
+     transform: translate(100%, -100%); 
+   }
+}
+
+ * {    margin: 0px auto;   padding: 0px;    text-decoration:none;  }
+  
+
+
+.cont_principal {   position: absolute; width: 100%;    height: 100%;   background: url('http://dedicaundeseo.honor.es/imagenes/fondo.jpg')  center  / cover ;  background-repeat: no-repeat;
+}
+
+.cont_modal {   position: absolute; width: 760px;   height: 570px; top: 50%; left: 50%; margin-top: -250px; margin-left: -380px;    }
+
+.cont_card_izq {    position: absolute; width: 760px;   height: 500px; background-color: #fff; z-index: 2;  box-shadow: 0px 5px 40px 10px rgba(0,0,0,0.25); -webkit-transition: all 0.5s;
+-moz-transition: all 0.5s;
+-ms-transition: all 0.5s;
+-o-transition: all 0.5s;
+transition: all 0.5s;
+    top: 0px; left: 0px;
+    }
+
+.cont_card_izq:hover , .cont_modal:hover > .cont_card_izq  {    top: -70px; left: -40px;    }
+
+.cont_card_der {    position: absolute; width: 760px;   height: 500px; background-color: #11dcd8; box-shadow: 0px 0px 40px 10px rgba(0,0,0,0.3);    }
+
+.cont_num_hidden {  position: absolute; right: 0px; top:20px;  width: 340px;    height: 480px; overflow: hidden;      } 
+
+.cont_num_hidden > h1 {     font-family: 'Poppins'; font-weight: 300;    font-size: 780px;  line-height: 90%; color: #f2f3f4;   }
+
+.cont_num_hidden_back { position: absolute; right: 0px;    top: 0px;
+    width: 380px;
+    height: 500px; overflow: hidden;      } 
+
+.cont_num_hidden_back > h1 {    font-family: "Poppins"; font-weight: 300;    font-size: 780px;  line-height: 77%; color: #1fd3d0;   }
+
+.cont_text {    position: relative; float:  left;   margin-top: 80px; margin-left: 50px;    }
+
+.cont_text > h1  {      font-family: 'Poppins'; font-weight:700;  font-size: 120px; margin: 0px;    line-height: 100%; color: #3b4046;     word-spacing: -30px; }
+
+.cont_text > h4  {      font-family: "Poppins"; font-weight:500; font-size: 17px; margin-top: 12px;   color: #68727c;  }
+
+.cont_text_back {   position: absolute; bottom: 0px;    height: 70px;   width: 100%;    }
+
+.cont_text_back > a  { margin: 25px;    display: inline-block; color: #fff;  font-family: "Poppins"; font-weight:500;  }
+
+.skip {  position: relative;    float:  right;  margin-right: 36px !important; color: #384a62 !important; }
+
+.input_text {       width: 80%;    margin: 0 auto;    margin-left: 50px;    margin-top: 55px;    padding: 5px;    border: none;    border-bottom: 3px solid #F2F3F4;     color: #cdcdcd; font-size: 16px;        font-family: "Poppins";  font-weight:500;  outline:none;       }
+
+.input_text::-webkit-input-placeholder {
+color: #cdcdcd;
+}
+.input_text:-moz-placeholder {
+color: #cdcdcd;
+}
+.input_text::-moz-placeholder {
+color: #cdcdcd;
+}
+.input_text:-ms-input-placeholder {
+color: #cdcdcd;
+}
+/*.panel-default {
+background-color:#DE5656;}
+*/

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Visualization of Tweets</title>
+
+  <script src="http://code.angularjs.org/angular-1.0.0rc3.min.js"></script>
+  <script src ="http://documentcloud.github.com/underscore/underscore-min-js"></script>
+  <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+  <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular.min.js"></script>
+  <script type="text/javascript" src="http:////ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-sanitize.js"></script>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="css/mainStyle.css" rel="stylesheet">
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <script type="text/javascript" src="graphs/app.js"></script>
+  <script type="text/javascript" src="graphs/getBenefits.js"></script>
+  <script type="text/javascript" src="graphs/getRisks.js"></script>
+  <script type="text/javascript" src="graphs/getNeutral.js"></script>
+  <script type="text/javascript" src="graphs/getText.js"></script>
+
+</head>
+
+<body>
+
+  <div id="wrapper" ng-controller = "getText">
+    <script type="text/javascript">
+
+    </script>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="Time.html">Tweet Analysis</a>
+      </div>
+    </ul>
+    <!-- sidebar -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav side-nav">
+        <li>
+
+          <a href="tweets.html"> Have a Look at the Tweets!</a>
+        </li>
+        <li>
+          <a href="Time.html">Classification by Time</a>
+        </li>
+        <li>
+          <a href="users.html">Classification by Users</a>
+        </li>
+        <li>
+          <a href="classify.html">Classify the Tweets</a>
+        </li>
+      </ul>
+    </div>
+  </nav>>
+</nav>
+<div id="page-wrapper" >
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 class="page-header">
+          Numbers <small> of Classified Tweets </small>
+        </h1>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <!-- <div class="panel panel-default"> -->
+      <!-- <div class="panel-heading"> -->
+      <!-- <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Benefits</h3> -->
+      <!-- </div> -->
+      <div class="panel-body">
+        <h2>
+          <!-- <b>  -->
+          Benefits <br>
+          <b>
+            <font color="#9DBE60">                   {{localStorage.numbers.benefits | number}}
+            </font>
+          </b>
+        </h2>
+        <!-- </div> -->
+      </div>
+    </div>
+
+
+    <div class="col-lg-4">
+      <!-- <div class="panel panel-default"> -->
+      <!-- <div class="panel-heading"> -->
+      <!-- <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Neutral</h3> -->
+      <!-- </div> -->
+      <div class="panel-body">
+        <h2 >
+          
+          Neutral <br>
+          <b>
+            <font color="#5EB9D9">                   
+             {{localStorage.numbers.neutral | number}}
+           </font>
+         </b>
+       </h2>
+       <!-- </div> -->
+     </div>
+   </div>
+
+   <div class="col-lg-4">
+    <!-- <div class="panel panel-default" > -->
+    <!-- <div class="panel-heading"> -->
+    <!-- <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Risks</h3> -->
+    <!-- </div> -->
+    <div class="panel-body">
+      <h2 >
+        
+        Risks   <br>
+        <b>
+          <font color="#DE5656">  
+            {{localStorage.numbers.risks | number}}
+          </font>
+        </b>
+      </h2>
+    </div>
+    <!-- </div> -->
+  </div>
+</div>
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">
+        Tweets <small> and frequent keywords</small>
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Benefits</h3>
+        </div>
+        <div class="panel-body" >
+          <div id="autoScroll" class="auto">
+            <article>
+
+              <div ng-repeat="benefit in localStorage.benefits">
+                <p>
+                 <font color="#9DBE60"><b>{{benefit.username}}</b></font> 
+                 {{benefit.content}}
+                 <br>
+
+                 <!-- {{benefit.createdAt}} -->
+               </p> 
+               <hr>
+             </div>
+
+           </article>                </div>
+         </div>
+       </div>
+     </div>
+
+     <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Neutral</h3>
+        </div>
+        <div class="panel-body">
+          <div id="autoScroll" class="auto">
+            <article>
+
+              <div ng-repeat="neutral in localStorage.neutrals">
+                <p>
+                 <font color="#5EB9D9"><b>{{neutral.username}}</b></font> 
+                 {{neutral.content}}
+               </p> 
+               <hr>
+             </div>
+
+           </article>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="col-lg-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Risks</h3>
+      </div>
+      <div class="panel-body">
+        <div id="autoScroll" class="auto">
+          <article>
+
+            <div ng-repeat="risk in localStorage.risks">
+              <p>
+               <font color="#DE5656"><b>{{risk.username}}</b></font> 
+               {{risk.content}}
+             </p> 
+             <hr>
+           </div>
+         </article>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+
+
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

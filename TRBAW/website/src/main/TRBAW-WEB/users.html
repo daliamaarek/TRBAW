@@ -1,0 +1,153 @@
+ <!DOCTYPE html>
+ <html lang="en" ng-app="myApp">
+
+ <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Visualization of Tweets</title>
+
+  <script src="http://code.angularjs.org/angular-1.0.0rc3.min.js"></script>
+  <script src ="http://documentcloud.github.com/underscore/underscore-min-js"></script>
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+  </script>
+  <!-- <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script> -->
+  <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+  <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+
+
+  <script type="text/javascript" src="graphs/app.js"></script>
+  <script type="text/javascript" src="graphs/getTweets.js"></script>
+  <script type="text/javascript" src="graphs/venndiagram.js"></script>
+  <script>
+    var example = angular.module("example", ["ngStorage"]);
+    example.controller("ExampleController", function($scope, $localStorage) {
+     
+      $scope.save = function() {
+        $localStorage.message = "Hello World";
+      }
+      
+      $scope.load = function() {
+        $scope.data = $localStorage.message;
+      }
+      
+    });
+  </script>
+  <link href ="css/mainStyle.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="Time.html">Tweet Analysis</a>
+      </div>
+    </ul>
+    <!-- sidebar -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav side-nav">
+        <li>
+          <a href="tweets.html"> Have a Look at the Tweets!</a>
+        </li>
+        <li>
+          <a href="Time.html">Classification by Time</a>
+        </li>
+
+        <li>
+          <a href="users.html">Classification by Users</a>
+        </li>
+        <li>
+          <a href="classify.html">Classify the Tweets</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="page-wrapper">
+
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="page-header">
+            Users <small>who tweeted about Autonomous Driving</small>
+          </h1>
+        </div>
+      </div>
+
+      <div class="row" ng-controller="venndiagram">
+
+        <div class="col-lg-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>By the Numbers</h3>
+            </div>
+            <div class="panel-body" >
+              <div > 
+                <p>
+                  Users who tweeted <b> <font color= "#5EB9D9"> Neutral </font> </b> tweets: <b>{{users[0].values[0] | number}}</b>
+                  <br>Users who tweeted <b> <font color= "#DE5656"> Risk</font> </b> tweets: <b>{{users[1].values[0] | number}}</b>
+                  <br>Users who tweeted <b> <font color= "#9DBE60"> Benefit </font></b> tweets: <b>{{users[2].values[0] | number}}</b>
+                  <br>Users who tweeted about both <b> <font color= "#5EB9D9"> Neutral </font></b> and <b><font color= "#DE5656">  Risk </font></b> tweets: <b>{{users[0].join[0] | number }}</b>
+                  <br>Users who tweeted about both <b><font color= "#DE5656">  Risk </font></b> and <b><font color= "#9DBE60">  Benefit </font></b> tweets: <b>{{users[1].join[0] | number}}</b>
+                  <br>Users who tweeted about both <b><font color= "#9DBE60">  Benefit </font></b> and<b><font color= "#5EB9D9">  Neutral </font></b> tweets: <b>{{users[2].join[0] | number}}</b>
+                </p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-lg-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>Venn Diagram</h3>
+            </div>
+            <div class="panel-body" >
+              <div id='myChart'></div>
+              <div > 
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
